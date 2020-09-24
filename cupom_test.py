@@ -83,7 +83,7 @@ def test_loja_completa():
 
 def test_nome_vazio():
     verifica_campo_obrigatorio_param(
-        "O campo logradouro do endereço é obrigatório",
+        "O campo nome da loja é obrigatório",
         None,
         LOGRADOURO,
         NUMERO,
@@ -339,22 +339,28 @@ def test_inscricao_estadual_vazia():
 def test_exercicio2_customizado():
 
     # Defina seus próprios valores para as variáveis a seguir
-    nome_loja = ""
-    logradouro = ""
-    numero = 0
-    complemento = ""
-    bairro = ""
-    municipio = ""
-    estado = ""
-    cep = ""
-    telefone = ""
-    observacao = ""
-    cnpj = ""
-    inscricao_estadual = ""
+    nome_loja = "Aguas indaia"
+    logradouro = "Av Joana Silveira"
+    numero = 727
+    complemento = "portal"
+    bairro = "Bela Vista"
+    municipio = "Campina Grande"
+    estado = "PB"
+    cep = "58038-000"
+    telefone = "(83) 8888-7777"
+    observacao = "Fonte sul"
+    cnpj = "11.111.222/3333-44"
+    inscricao_estadual = "111.222.333.444"
 
     # E atualize o texto esperado abaixo
     assert (
         cupom.dados_loja_param(nome_loja, logradouro, numero, complemento, bairro, municipio, estado, cep, telefone, observacao, cnpj, inscricao_estadual)
-        == """
-"""
-    )
+        == \
+'''Aguas indaia
+Av Joana Silveira, 727 portal
+Bela Vista - Campina Grande - PB
+CEP:58038-000 Tel (83) 8888-7777
+Fonte sul
+CNPJ: 11.111.222/3333-44
+IE: 111.222.333.444'''
+)
